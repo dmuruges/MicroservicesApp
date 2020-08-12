@@ -32,7 +32,7 @@ namespace Basket.API.Entities
 
                     totalPrice += item.Price * item.Quantity;
                 }
-                return TotalPrice;
+                return totalPrice;
             }
         }
     }
