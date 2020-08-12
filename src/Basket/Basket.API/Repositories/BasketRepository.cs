@@ -1,5 +1,6 @@
 ﻿using Basket.API.Data.Interfaces;
 using Basket.API.Entities;
+using Basket.API.Repositories.Interfaces;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
