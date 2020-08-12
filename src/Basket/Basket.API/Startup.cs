@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Basket.API.Data;
 using Basket.API.Data.Interfaces;
 using Basket.API.Repositories;
@@ -39,7 +40,7 @@ namespace Basket.API
             });
             services.AddTransient<IBasketContext, BasketContext>();
             services.AddTransient<IBasketRepository, BasketRepository>();
-
+            services.AddAutoMapper(typeof(Startup));
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Basket API", Version = "v1" });
@@ -50,7 +51,7 @@ namespace Basket.API
                 {
                     HostName = Configuration["EventBus:Hostname"]
                 };
-                
+
                 if (!string.IsNullOrEmpty(Configuration["EventBus:UserName"]))
                 {
                     factory.UserName = Configuration["EventBus:UserName"];
@@ -64,7 +65,6 @@ namespace Basket.API
                 return new RabbitMQConnection(factory);
             });
 
-            
             services.AddControllers();
         }
 
